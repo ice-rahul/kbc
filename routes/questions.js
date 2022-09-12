@@ -26,6 +26,12 @@ router.get('/question/:slot', async (req, res) => {
     }
 });
 
+const questionValidation = (body) => {
+    return {
+        error: undefined
+    }
+}
+
 router.post('/add', async (req, res) => {
     // Validation
     const { error } = questionValidation(req.body);

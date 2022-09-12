@@ -36,5 +36,11 @@ mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true }, () =>
     console.log('Connected to DB')
 );
 
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "connection error: "));
+db.once("open", function () {
+  console.log("Connected successfully");
+});
+
 // Listen to server
 app.listen(3000, () => console.log('Listening on http://localhost:3000'));
